@@ -33,9 +33,9 @@ article.container {
   position: relative;
 }
 
-//section.toc {
-//  display: none;
-//}
+section.toc {
+  display: none;
+}
 
 ul.toc {
   li.toc3 {
@@ -50,4 +50,10 @@ ul.toc {
 a.dropdown-item {
   padding-right: 0;
   width: 90%;
+}
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
 }

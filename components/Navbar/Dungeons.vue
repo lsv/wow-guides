@@ -1,5 +1,5 @@
 <template>
-  <b-dropdown aria-role="list">
+  <b-dropdown v-if="!isLoading" aria-role="list">
     <template #trigger="{ active }">
       <b-button
         label="Dungeons"
@@ -21,7 +21,10 @@
         paddingless
       >
         <!--suppress JSUnresolvedVariable -->
-        <nuxt-link :to="dungeon.path" v-text="dungeon.title"></nuxt-link>
+        <nuxt-link
+          :to="{ name: 'dungeon-slug', params: { slug: dungeon.slug } }"
+          v-text="dungeon.title"
+        ></nuxt-link>
       </b-dropdown-item>
 
       <hr :key="`h${zone.title}`" class="dropdown-divider" />
@@ -47,6 +50,7 @@ interface Zone {
 @Component
 export default class Dungeons extends Vue {
   zones: Zone[] = []
+  isLoading = true
 
   mounted() {
     this.$content('dungeon')
@@ -72,6 +76,9 @@ export default class Dungeons extends Vue {
           }
         })
         this.zones = zones
+      })
+      .finally(() => {
+        this.isLoading = false
       })
   }
 }

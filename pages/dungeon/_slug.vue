@@ -33,23 +33,6 @@ export default class DungeonSlug extends Vue {
   slug!: string
   document: any = {}
 
-  head() {
-    return {
-      script: [
-        {
-          innerHTML:
-            'const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};',
-          type: 'text/javascript',
-          charset: 'utf-8',
-        },
-        {
-          src: 'https://wow.zamimg.com/widgets/power.js',
-          defer: true,
-        },
-      ],
-    }
-  }
-
   loadPageData() {
     this.isLoading = true
     this.$content('dungeon', this.slug)

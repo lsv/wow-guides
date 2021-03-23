@@ -1,8 +1,8 @@
 <!--suppress JSUnresolvedVariable, JSUnusedLocalSymbols -->
 <template>
-  <b-navbar v-if="!isLoading">
+  <b-navbar>
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item tag="nuxt-link" :to="{ name: 'index' }">
         <img src="~/assets/logo.png" alt="Hatchling" />
       </b-navbar-item>
     </template>
@@ -11,7 +11,6 @@
       <raid></raid>
     </template>
   </b-navbar>
-  <b-loading v-else></b-loading>
 </template>
 
 <script lang="ts">

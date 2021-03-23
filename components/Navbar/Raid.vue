@@ -1,5 +1,5 @@
 <template>
-  <b-dropdown aria-role="list">
+  <b-dropdown v-if="!isLoading" aria-role="list">
     <template #trigger="{ active }">
       <b-button
         label="Raids"
@@ -15,13 +15,16 @@
 
       <!--suppress JSUnusedLocalSymbols, JSUnresolvedVariable -->
       <b-dropdown-item
-        v-for="dungeon in zone.raids"
-        :key="dungeon.slug"
+        v-for="raid in zone.raids"
+        :key="raid.slug"
         has-link
         paddingless
       >
         <!--suppress JSUnresolvedVariable -->
-        <nuxt-link :to="dungeon.path" v-text="dungeon.title"></nuxt-link>
+        <nuxt-link
+          :to="{ name: 'raid-slug', params: { slug: raid.slug } }"
+          v-text="raid.title"
+        ></nuxt-link>
       </b-dropdown-item>
 
       <hr :key="`h${zone.title}`" class="dropdown-divider" />
@@ -47,6 +50,7 @@ interface Raids {
 @Component
 export default class RaidC extends Vue {
   raids: Raids[] = []
+  isLoading = true
 
   mounted() {
     this.$content('raid')
@@ -72,6 +76,9 @@ export default class RaidC extends Vue {
           }
         })
         this.raids = zones
+      })
+      .finally(() => {
+        this.isLoading = false
       })
   }
 }

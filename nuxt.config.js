@@ -11,7 +11,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'sl-dungeon.vue',
+    title: 'Hatchling - WOW Guide',
     htmlAttrs: {
       lang: 'en',
     },
@@ -21,6 +21,18 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        innerHTML:
+          'const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: false};',
+        type: 'text/javascript',
+        charset: 'utf-8',
+      },
+      {
+        src: 'https://wow.zamimg.com/widgets/power.js',
+        defer: true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

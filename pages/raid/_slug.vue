@@ -6,6 +6,28 @@
         <h2 class="subtitle" v-text="document.zone"></h2>
       </div>
     </section>
+
+    <div class="pagination">
+      <b-button
+        v-if="prev"
+        type="is-primary is-light"
+        size="is-small"
+        tag="nuxt-link"
+        :to="prev.slug"
+        v-text="`← ${prev.title}`"
+      ></b-button>
+      <span v-else></span>
+      <b-button
+        v-if="next"
+        type="is-primary is-light"
+        size="is-small"
+        tag="nuxt-link"
+        :to="next.slug"
+        v-text="`${next.title} →`"
+      ></b-button>
+      <span v-else></span>
+    </div>
+
     <section class="toc">
       <toc :tocs="document.toc"></toc>
     </section>
@@ -32,26 +54,21 @@ export default class RaidSlug extends Vue {
   isLoading = true
   slug!: string
   document: any = {}
-
-  head() {
-    return {
-      script: [
-        {
-          innerHTML:
-            'const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};',
-          type: 'text/javascript',
-          charset: 'utf-8',
-        },
-        {
-          src: 'https://wow.zamimg.com/widgets/power.js',
-          defer: true,
-        },
-      ],
-    }
-  }
+  prev: any = ''
+  next: any = ''
 
   loadPageData() {
     this.isLoading = true
+    this.$content('raid')
+      .only(['title', 'slug'])
+      .sortBy('killorder', 'asc')
+      .surround(this.slug)
+      .fetch()
+      .then((response: any) => {
+        this.prev = response[0]
+        this.next = response[1]
+      })
+
     this.$content('raid', this.slug)
       .fetch()
       .then((response) => {
