@@ -1,3 +1,5 @@
+const BASEURL = '/wow-guides/'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -6,7 +8,7 @@ export default {
   target: 'static',
 
   router: {
-    base: '/wow-guides/',
+    base: BASEURL,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -19,8 +21,34 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
+      { name: 'msapplication-TileColor', content: '#2b5797' },
+      { name: 'theme-color', content: '#ffffff' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: `${BASEURL}apple-touch-icon.png`,
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: `${BASEURL}favicon-32x32.png`,
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: `${BASEURL}favicon-16x16.png`,
+      },
+      { ref: 'manifest', href: `${BASEURL}site.webmanifest` },
+      {
+        rel: 'mask-icon',
+        href: `${BASEURL}safari-pinned-tab.svg`,
+        color: '#2b5797',
+      },
+    ],
     script: [
       {
         innerHTML:
