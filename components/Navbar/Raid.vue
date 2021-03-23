@@ -1,0 +1,78 @@
+<template>
+  <b-dropdown aria-role="list">
+    <template #trigger="{ active }">
+      <b-button
+        label="Raids"
+        type="is-primary"
+        :icon-right="active ? 'menu-up' : 'menu-down'"
+      >
+      </b-button>
+    </template>
+    <template v-for="zone in raids">
+      <b-dropdown-item :key="zone.title" custom>
+        <h3 v-text="zone.title"></h3>
+      </b-dropdown-item>
+
+      <!--suppress JSUnusedLocalSymbols, JSUnresolvedVariable -->
+      <b-dropdown-item
+        v-for="dungeon in zone.raids"
+        :key="dungeon.slug"
+        has-link
+        paddingless
+      >
+        <!--suppress JSUnresolvedVariable -->
+        <nuxt-link :to="dungeon.path" v-text="dungeon.title"></nuxt-link>
+      </b-dropdown-item>
+
+      <hr :key="`h${zone.title}`" class="dropdown-divider" />
+    </template>
+  </b-dropdown>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+interface Raid {
+  title: string
+  path: string
+  slug: string
+  zone: string
+}
+
+interface Raids {
+  title: string
+  raids: Raid[]
+}
+
+@Component
+export default class RaidC extends Vue {
+  raids: Raids[] = []
+
+  mounted() {
+    this.$content('raid')
+      .only(['title', 'slug', 'image', 'zone'])
+      .sortBy('zone')
+      .sortBy('killorder', 'asc')
+      .fetch()
+      .then((response: any) => {
+        const zones: Raids[] = []
+        response.forEach((raid: Raid) => {
+          const index = zones.findIndex((z) => {
+            return z.title === raid.zone
+          })
+
+          if (index === -1) {
+            const zone = {
+              title: raid.zone,
+              raids: [raid],
+            }
+            zones.push(zone)
+          } else {
+            zones[index].raids.push(raid)
+          }
+        })
+        this.raids = zones
+      })
+  }
+}
+</script>

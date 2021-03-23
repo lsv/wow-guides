@@ -1,0 +1,53 @@
+@import "_bulma.scss";
+@import "_buefy.scss";
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .title;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.nuxt-content span.icon {
+  display: none;
+}
+
+.nuxt-content h1, h2, h3, h4, h5, h6 {
+  @extend .subtitle;
+}
+
+.nuxt-content h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  border-bottom: 3px dashed $black;
+  margin-bottom: 3rem;
+}
+
+.nuxt-content h3 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid $black;
+}
+
+article.container {
+  position: relative;
+}
+
+//section.toc {
+//  display: none;
+//}
+
+ul.toc {
+  li.toc3 {
+    margin-left: 1rem;
+  }
+
+  li.toc4 {
+    margin-left: 2rem;
+  }
+}
+
+a.dropdown-item {
+  padding-right: 0;
+  width: 90%;
+}
