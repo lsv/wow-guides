@@ -2,6 +2,12 @@
   <div class="container">
     <navbar></navbar>
     <Nuxt />
+    <footer class="footer">
+      <div class="content has-text-centered has-text-grey-light">
+        <p>Hatchling - WOW Guides</p>
+        <p class="is-size-7">by LsV</p>
+      </div>
+    </footer>
   </div>
 </template>
 
