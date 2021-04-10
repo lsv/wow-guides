@@ -7,9 +7,10 @@
       </div>
     </section>
 
-    <section class="section is-large">
+    <section class="section is-large has-text-centered">
       <h1>Hatchling - WOW Guides</h1>
-      <p>Just some guides with the most important stuff</p>
+      <h2>Just some guides with the most important stuff</h2>
+      <p><img src="~/assets/logo.png" alt="Hatchling" /></p>
       <p>
         For better and more deep guides, go to
         <a href="https://wowhead.com">wowhead.com</a>

@@ -35,5 +35,7 @@ killorder: 2
 * Kill Huntsman
 
 ## Youtube guide
-
 https://www.youtube.com/watch?v=b5CDD6c_Itw&t=12s
+
+## Wowhead guide
+https://www.wowhead.com/guides/altimor-the-huntsman-castle-nathria-raid-strategy-guide

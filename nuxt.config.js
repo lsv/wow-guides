@@ -52,13 +52,10 @@ export default {
     script: [
       {
         innerHTML:
-          'const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: false};',
-        type: 'text/javascript',
-        charset: 'utf-8',
+          'const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};',
       },
       {
         src: 'https://wow.zamimg.com/widgets/power.js',
-        defer: true,
       },
     ],
   },

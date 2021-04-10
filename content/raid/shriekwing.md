@@ -34,5 +34,7 @@ Every few seconds the boss will cast Earsplitting Shriek
 When phase 2 ends, it will go back to phase 1
 
 ## Youtube guide
-
 https://www.youtube.com/watch?v=72EI8HBaTAg&t=20s
+
+## Wowhead guide
+https://www.wowhead.com/guides/shriekwing-castle-nathria-raid-strategy-guide
